@@ -35,3 +35,44 @@ exports.monthEndDay = date => {
   const day = new Date(end_date - 1).getDate()
   return day
 }
+
+exports.dateDay = value => {
+  if (!value) {
+    return ''
+  }
+  const data = parseInt(value)
+  const year = new Date(data).getFullYear()
+  const month = new Date(data).getMonth() + 1
+  const day = new Date(data).getDate()
+  return year + '.' + addZero(month) + '.' + addZero(day)
+}
+
+exports.dateDayTime = value => {
+  if (!value) {
+    return ''
+  }
+  const data = parseInt(value)
+  const year = new Date(data).getFullYear()
+  const month = new Date(data).getMonth() + 1
+  const day = new Date(data).getDate()
+  const hours = new Date(parseInt(data)).getHours()
+  const minutes = new Date(parseInt(data)).getMinutes()
+  const seconds = new Date(parseInt(data)).getSeconds()
+  return year + '.' + addZero(month) + '.' + addZero(day) + ' ' + addZero(hours) + ':' + addZero(minutes) + ':' + addZero(seconds)
+}
+
+exports.dateTime = value => {
+  if (!value) {
+    return ''
+  }
+  const data = parseInt(value)
+  const hours = new Date(parseInt(data)).getHours()
+  const minutes = new Date(parseInt(data)).getMinutes()
+  const seconds = new Date(parseInt(data)).getSeconds()
+  return addZero(hours) + ':' + addZero(minutes) + ':' + addZero(seconds)
+}
+
+function addZero (value) {
+  value = parseInt(value)
+  return value < 10 ? '0' + value : value
+}
