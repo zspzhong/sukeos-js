@@ -1,6 +1,6 @@
 
-
-exports.JsonToJson = (obj, keys) => {
+exports.JsonToJson = JsonToJson
+function JsonToJson(obj, keys) {
   if (!keys) {
     return obj
   }
@@ -9,6 +9,13 @@ exports.JsonToJson = (obj, keys) => {
     result[key] = obj[key] ? obj[key] : null
   })
   return result
+}
+
+exports.ArrayJsonToArray = (array, key) => {
+  let result = []
+  for(let i = 0; i < array.length; i++) {
+    
+  }
 }
 
 exports.CompactJson = json => {
@@ -33,8 +40,4 @@ exports.CompactArray = array => {
     }
   }
   return result
-}
-
-exports.ChunkArray = (array, key) => {
-  
 }
