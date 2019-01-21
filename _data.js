@@ -14,8 +14,11 @@ function JsonToJson(obj, keys) {
 exports.ArrayJsonToArray = (array, key) => {
   let result = []
   for(let i = 0; i < array.length; i++) {
-    
+    if (array[i][key]) {
+      result.push(array[i][key])
+    }
   }
+  return result
 }
 
 exports.CompactJson = json => {
