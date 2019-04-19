@@ -36,15 +36,16 @@ exports.monthEndDay = date => {
   return day
 }
 
-exports.dateDay = value => {
+exports.dateDay = (value, interval) => {
   if (!value) {
     return ''
   }
+  interval = interval || '.'
   const data = parseInt(value)
   const year = new Date(data).getFullYear()
   const month = new Date(data).getMonth() + 1
   const day = new Date(data).getDate()
-  return year + '.' + addZero(month) + '.' + addZero(day)
+  return year + interval + addZero(month) + interval + addZero(day)
 }
 
 exports.dateDayTime = value => {

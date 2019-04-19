@@ -11,6 +11,19 @@ function JsonToJson(obj, keys) {
   return result
 }
 
+exports.ArrayJsonToArrayJson = (array, keys) => {
+  if (!keys) {
+    return array
+  }
+  let result = []
+  for(let i = 0; i < array.length; i++) {
+    let obj = array[i]
+    let json = JsonToJson(obj, keys)
+    result.push(json)
+  }
+  return result
+}
+
 exports.ArrayJsonToArray = (array, key) => {
   let result = []
   for(let i = 0; i < array.length; i++) {
