@@ -1,6 +1,6 @@
 
 exports.JsonToJson = JsonToJson
-function JsonToJson(obj, keys) {
+function JsonToJson (obj, keys) {
   if (!keys) {
     return obj
   }
@@ -9,6 +9,45 @@ function JsonToJson(obj, keys) {
     result[key] = obj[key] ? obj[key] : null
   })
   return result
+}
+
+exports.JsonToArray = JsonToArray
+function JsonToArray (json) {
+  let result = []
+  for (let key in json) {
+    result.push(json[key])
+  }
+  return result
+}
+
+exports.ArrayToJson = ArrayToJson
+function ArrayToJson (array, key) {
+  let json = {}
+  for(let i = 0; i < array.length; i++) {
+    const obj = array[i]
+    const keyValue = obj[key] ? obj[key] : ''
+    json[keyValue] = obj
+  }
+  return json
+}
+
+exports.ArrayToJsonArray = ArrayToJsonArray
+function ArrayToJsonArray (array, key) {
+  let json = {}
+  for(let i = 0; i < array.length; i++) {
+    const obj = array[i]
+    const keyValue = obj[key] ? obj[key] : ''
+    if (!json[keyValue]) {
+      json[keyValue] = []
+    }
+    json[keyValue].push(obj)
+  }
+  return json
+}
+
+exports.ArrayJsonBreak = ArrayJsonBreak
+function ArrayJsonBreak (array, key) {
+  return JsonToArray(ArrayToJsonArray(array, key))
 }
 
 exports.ArrayJsonToArrayJson = (array, keys) => {
@@ -24,7 +63,8 @@ exports.ArrayJsonToArrayJson = (array, keys) => {
   return result
 }
 
-exports.ArrayJsonToArray = (array, key) => {
+exports.ArrayJsonToArray = ArrayJsonToArray
+function ArrayJsonToArray (array, key) {
   let result = []
   for(let i = 0; i < array.length; i++) {
     if (array[i][key]) {

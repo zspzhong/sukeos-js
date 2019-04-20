@@ -1,4 +1,3 @@
-
 exports.dayStartEnd = (date, time) => {
   if(!date) date = new Date().getTime()
   if(!time) time = '00:00'
@@ -34,6 +33,23 @@ exports.monthEndDay = date => {
   const end_date = new Date(year, month+1, 1).getTime()
   const day = new Date(end_date - 1).getDate()
   return day
+}
+
+exports._year = _year
+function _year (date) {
+  return new Date(parseInt(date)).getFullYear()
+}
+exports._month = _month
+function _month (date) {
+  return new Date(parseInt(date)).getMonth() + 1
+}
+exports._day = _day
+function _day (date) {
+  return new Date(parseInt(date)).getDate()
+}
+exports._week = _week
+function _week (date) {
+  return new Date(parseInt(date)).getDay()
 }
 
 exports.dateDay = (value, interval) => {
