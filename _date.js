@@ -12,6 +12,16 @@ exports.dayStartEnd = (date, time) => {
   }
 }
 
+// 计算月份天数
+exports.monthDays = (time) => {
+  const year = new Date(parseInt(time)).getFullYear()
+  const month = new Date(parseInt(time)).getMonth()
+  const nextMonth = new Date(year,month+1,1).getTime()
+  const nowMonthDay = new Date(parseInt(nextMonth-1)).getDate()
+  return nowMonthDay
+}
+
+// 月份开始时间 结束时间
 exports.monthStartEnd = (date, time) => {
   if(!date) date = new Date().getTime()
   if(!time) time = '00:00'
