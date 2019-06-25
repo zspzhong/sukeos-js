@@ -12,6 +12,39 @@ exports.dayStartEnd = (date, time) => {
   }
 }
 
+// 解析时间戳 年月日
+exports.mapTime = (time) => {
+  if(!time || time == null) {
+    return {
+      year: null,
+      month: null,
+      day: null,
+      hours: null,
+      minutes: null,
+      seconds: null
+    }
+  };
+
+  var year = new Date(parseInt(time)).getFullYear()
+  var month = new Date(parseInt(time)).getMonth() + 1
+  var day = new Date(parseInt(time)).getDate()
+  var hours = new Date(parseInt(time)).getHours()
+  var minutes = new Date(parseInt(time)).getMinutes()
+  var seconds = new Date(parseInt(time)).getSeconds()
+  var week = new Date(parseInt(time)).getDay()
+
+  return {
+    time: time,
+    year: year,
+    month: month,
+    day: day,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+    week: week
+  }
+}
+
 // 计算月份天数
 exports.monthDays = (time) => {
   const year = new Date(parseInt(time)).getFullYear()
@@ -99,6 +132,7 @@ exports.dateTime = value => {
   return addZero(hours) + ':' + addZero(minutes) + ':' + addZero(seconds)
 }
 
+exports.addZero = addZero
 function addZero (value) {
   value = parseInt(value)
   return value < 10 ? '0' + value : value
