@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/zspzhong/sukeos-js#readme",
   "dependencies": {
-    "rollup": "^0.68.1"
+    "rollup": "^3.29.5"
   }
 }
